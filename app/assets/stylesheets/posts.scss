@@ -36,11 +36,14 @@
 }
 .post-form-container {
     color: rgb(0, 0, 0);
-    box-shadow: 1px 1px 2px 1px rgb(228, 228, 228);
+    width: 48%;
     padding: 4px;
-    background: linear-gradient(rgb(249, 249, 249), rgb(242, 246, 254));
     min-height: 500px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
 }
 .post-budget-container {
     color: rgb(0, 0, 0);
@@ -62,6 +65,32 @@
     background-color: rgb(255, 255, 255);
     text-align: center;
 }
+.page-title {
+    /* Style for the H1 element at the top */
+    text-align: center;
+}
+
+.flex-container {
+    /* Create a flex container to display divs side by side */
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.form-group {
+    /* Style for each form group (e.g., Category, Amount, Date, Description) */
+    margin-bottom: 10px;
+}
+
+.error-list {
+    /* Style for the error list */
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Add more styles as needed */
+
 //post-index-items
 .post-index-item {
     border-bottom: 1px solid rgb(199, 199, 199);

@@ -2,14 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.all-expenses {
+    padding: 10px;
+}
+
 .all-expenses h1 {
     font-size: 18px;
     color: rgb(25, 94, 172);
 }
 .all-expenses li {
-    box-shadow: 1px 1px 1px 2px gray;
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px gray;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
 }
 .all-expenses ul {
-    padding: 2px;
     font-size: 17px;
+    text-align: center;
+    width: 95%;
+    margin: auto;
 }

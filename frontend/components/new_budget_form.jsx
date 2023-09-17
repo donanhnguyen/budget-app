@@ -1,12 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-    Route,
-    Redirect,
-    Switch,
-    Link,
-    HashRouter
-  } from 'react-router-dom';
 
 class NewBudgetForm extends React.Component {
 
@@ -109,7 +102,7 @@ class NewBudgetForm extends React.Component {
                                 {this.generateYearOptions()}
                             </select>
                             <br/>
-                        <label for='salary'>Salary</label>
+                        <label for='salary'>Annual Salary</label>
                             <br/>
                         <input class='post-subject' id='salary' type='number' onChange={this.update('salary')}/>
                             <br />

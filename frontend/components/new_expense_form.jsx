@@ -136,14 +136,14 @@ class NewExpenseForm extends React.Component {
     render () {
         return (
             <div>
-                <h1>Your take-home monthly pay is : {this.state.currentTakeHomePay}</h1>
-                <h1>Your take-home monthly pay AFTER expenses is :{this.afterExpenses()}</h1>
-                <div>
-                    <div ref='pieChart' class='left' id='pie-chart'>
-                    </div>
+                <h1 class="page-title">Your take-home monthly pay is: ${this.state.currentTakeHomePay.toLocaleString()}</h1>
+                <h1 class="page-title">Your leftover money AFTER expenses is: ${this.afterExpenses().toLocaleString()}</h1>
+                <div class="flex-container">
+                    <div ref='pieChart' class='left' id='pie-chart'></div>
                     <div ref='postForm' class={`post-form-container`}>
                         <form ref="postFormReset" onSubmit={this.submitExpense.bind(this)}>
-                                <br />
+                            <div class="form-group">
+                                <label for='category'>Category</label>
                                 <select class='post-category-dropdown' ref='category' id='category' onChange={this.update('category')}>
                                     <option value="" selected disabled hidden>Choose Category</option>
                                     <option value="Food">Food</option>
@@ -151,24 +151,26 @@ class NewExpenseForm extends React.Component {
                                     <option value="Utilities">Utilities</option>
                                     <option value="Misc">Misc</option>
                                 </select>
-                                <br />
-                            <label for='amount'>Amount</label>
-                                <br/>
-                            <input class='post-subject' id='amount' type='number' onChange={this.update('amount')}/>
-                                <br />
-                            <label for='date'>Date</label>
-                                <br/>
-                            <input class='post-subject' id='date' type='date' onChange={this.update('date')}/>
-                                <br/>
-                            <label for='description'>Description</label>
-                                <br/>
-                            <input class='post-subject' id='description' type='text' onChange={this.update('description')}/>
-                                <br/>
-                            <input class='post-submit-button' type='submit' value='Add New Expense' />
+                            </div>
+                            <div class="form-group">
+                                <label for='amount'>Amount</label>
+                                <input class='post-subject' id='amount' type='number' onChange={this.update('amount')}/>
+                            </div>
+                            <div class="form-group">
+                                <label for='date'>Date</label>
+                                <input class='post-subject' id='date' type='date' onChange={this.update('date')}/>
+                            </div>
+                            <div class="form-group">
+                                <label for='description'>Description</label>
+                                <input class='post-subject' id='description' type='text' onChange={this.update('description')}/>
+                            </div>
+                            <div class="form-group">
+                                <input class='post-submit-button' type='submit' value='Add New Expense' />
+                            </div>
                         </form>
-
-                        <div><ul>{this.displayErrors()}</ul></div>
-                        
+                        <div class="form-group">
+                            <ul class="error-list">{this.displayErrors()}</ul>
+                        </div>
                     </div>
                 </div>
                 <div class='clearfix'></div>
@@ -177,8 +179,8 @@ class NewExpenseForm extends React.Component {
                         {this.displayAllExpenses()}
                     </ul>
                 </div>
-
             </div>
+
         )
     }
 

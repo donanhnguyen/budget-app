@@ -46,7 +46,7 @@ class EditBudget extends React.Component {
             return (
                 <div>
                     <h1>Month of {currentBudget.month} {currentBudget.year}</h1>
-                    <h1>{currentBudget.salary} annual salary</h1>
+                    <h1>${currentBudget.salary.toLocaleString()} annual salary</h1>
                     <div>
                         <NewExpenseFormContainer moneySpent={moneySpent} currentBudget={currentBudget} takeHomePayDataset={this.calculateTakeHomePay()}/>
                     </div>
