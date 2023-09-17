@@ -1,85 +1,142 @@
-import React from 'react';
-import {Link, withRouter} from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 
-class SessionForm extends React.Component {
-    constructor (props) {
-        super(props);
-        this.state = {
-            username: "",
-            password: "",
-          };
-    }
+function SessionForm(props) {
+    const [formData, setFormData] = useState({
+        username: '',
+        password: '',
+        confirmPassword: '',
+    });
 
-    componentWillMount () {
-        this.props.errors = [];
-    }
+    const [error, setError] = useState('');
 
-    handleSubmit (event) {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        const user = Object.assign({}, this.state);
-        this.props.processForm(user);
-    }
+        const { password, confirmPassword, username } = formData;
+        if (props.formType === "signup") {
+            if (password === confirmPassword) {
+                var user = {username: username, password: password};
+                props.processForm(user);
+            } else {
+                setError('Passwords do not match');
+                setFormData((prevState) => {
+                    return {...prevState, confirmPassword: '' } 
+                });
+            }
+        } else {
+            var user = {username: username, password: password}
+            props.processForm(user);
+        }
+        
+    };
 
-    navLink () {
-        if (this.props.formType === 'login') {
-            return <Link class={'nav-link session-link-hover'} to="/signup">sign up instead</Link>;
-          } else {
-            return <Link class={'nav-link session-link-hover'} to="/login">log in instead</Link>;
-          }
-    }
+    const navLink = () => {
+        if (props.formType === 'login') {
+            return (
+                <Link className="nav-link session-link-hover" to="/signup">
+                    sign up instead
+                </Link>
+            );
+        } else {
+            return (
+                <Link className="nav-link session-link-hover" to="/login">
+                    log in instead
+                </Link>
+            );
+        }
+    };
 
-    update (field) {
-       return (event) => {
-           this.setState({
-                [field]: event.currentTarget.value
-            })
-       } 
-    }
+    const handleInputChange = (field) => (event) => {
+        setFormData({
+            ...formData,
+            [field]: event.currentTarget.value,
+        });
+    };
 
-    renderErrors() {
-        if (this.props.errors.length > 0) {
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            handleSubmit(e);
+        }
+    };
+
+    const renderErrors = () => {
+        if (props.errors.length > 0) {
             return (
                 <ul>
-                    {this.props.errors.map((error, i) => (
-                    <li class='error-message' key={`error-${i}`}>
-                        {error}
-                    </li>
-                    ))} 
+                    {props.errors.map((error, i) => (
+                        <li className="error-message" key={`error-${i}`}>
+                            {error}
+                        </li>
+                    ))}
                     <br />
                 </ul>
-               
             );
-        }   
-    }
+        }
+    };
 
-    render () {
-        return (
-            <div class="session-form-container session-form-background">
-                <div class="session-form">
-                    <h1> {this.props.formType} or {this.navLink()}</h1>
+    return (
+        <div className="session-form-container session-form-background">
+            <div className="session-form">
+                <h1>
+                    {props.formType} or {navLink()}
+                </h1>
 
-                    {this.renderErrors()}
+                {error && <div className="error-message">{error}</div>}
 
-                    <form onSubmit={ this.handleSubmit.bind(this) }>
-                        <label>Username</label>
-                        <input type='text' value={this.state.username} onChange={this.update('username')} />
+                {renderErrors()}
 
-                            <br /><br />
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="username">Username</label>
+                        <input
+                            type="text"
+                            id="username"
+                            value={formData.username}
+                            onChange={handleInputChange('username')}
+                            onKeyDown={handleKeyPress}
+                        />
+                    </div>
 
-                        <label>Password</label>
-                        <input type='password' value={this.state.password} onChange={this.update('password')}/>
+                    <div className="form-group">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            value={formData.password}
+                            onChange={handleInputChange('password')}
+                            onKeyDown={handleKeyPress}
+                        />
+                    </div>
 
-                            <br /><br />
+                    {props.formType === "signup" ?
+                    
+                        <div className="form-group">
+                            <label htmlFor="confirmPassword">Confirm Password</label>
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                value={formData.confirmPassword}
+                                onChange={handleInputChange('confirmPassword')}
+                                onKeyDown={handleKeyPress}
+                            />
+                        </div>
 
-                        <input class='session-submit-button' type="submit" value="Submit" />
-                    </form>
+                        : ""
+                
+                    }
 
-                </div>
-            </div> 
-        )
-        
-    }
-
+                    <div className="form-group">
+                        <input
+                            className="session-submit-button"
+                            type="submit"
+                            value="Submit"
+                        />
+                    </div>
+                </form>
+            </div>
+        </div>
+    );
 }
 
 export default withRouter(SessionForm);

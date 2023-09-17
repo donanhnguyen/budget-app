@@ -14,7 +14,7 @@ class NewBudgetForm extends React.Component {
         super(props)
         this.state = {
             month: null,
-            year: null,
+            year: new Date().getFullYear(),
             salary: null,
             user_id: this.props.currentUser ? this.props.currentUser.id : null,
         }
@@ -60,7 +60,22 @@ class NewBudgetForm extends React.Component {
             return displayErrors;
         }
     }
-
+    generateYearOptions() {
+        const currentYear = new Date().getFullYear();
+        const yearsToShow = 10; // You can adjust the number of years to show
+      
+        const yearOptions = [];
+        for (let i = currentYear; i >= currentYear - yearsToShow; i--) {
+          yearOptions.push(
+            <option key={i} value={i}>
+              {i}
+            </option>
+          );
+        }
+      
+        return yearOptions;
+      }
+      
     render () {
 
         return (
@@ -90,7 +105,9 @@ class NewBudgetForm extends React.Component {
                             <br /><br />
                         <label for='year'>Year</label>
                             <br/>
-                        <input class='post-subject' id='year' type='number' onChange={this.update('year')}/>
+                            <select className='post-subject' id='year' onChange={this.update('year')}>
+                                {this.generateYearOptions()}
+                            </select>
                             <br/>
                         <label for='salary'>Salary</label>
                             <br/>
