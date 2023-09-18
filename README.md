@@ -2,7 +2,7 @@
 
 ![alt text](http://g.recordit.co/nEHma6mcQK.gif)
 
-[Video Link]()
+[Video Link](https://www.youtube.com/watch?v=RHNEqIbuxw8)
 
 - Full-Stack application allowing users to manage their monthly budgets and expenses.
 - Pie chart programmed and displayed dynamically for data visualization (D3.js) for paycheck calculations and info.
