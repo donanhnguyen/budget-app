@@ -146,6 +146,7 @@ class NewExpenseForm extends React.Component {
                                 <label for='category'>Category</label>
                                 <select class='post-category-dropdown' ref='category' id='category' onChange={this.update('category')}>
                                     <option value="" selected disabled hidden>Choose Category</option>
+                                    <option value="Housing">Housing</option>
                                     <option value="Food">Food</option>
                                     <option value="Entertainment">Entertainment</option>
                                     <option value="Utilities">Utilities</option>
