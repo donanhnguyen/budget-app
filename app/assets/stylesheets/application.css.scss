@@ -22,11 +22,11 @@ ul {
     margin: 0;
 }
 body {
-    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-family: "Jost";
     margin: 0;
 }
 button {
-    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-family: "Jost";
     font-size: 20px;
     cursor: pointer;
 }
@@ -107,6 +107,7 @@ a:hover {
     padding: 100px;
     text-align: center;
     font-size: 40px;
+    font-weight: bold;
     color: white;
     animation: fadein 1.2s;
     -moz-animation: fadein 1.2s; /* Firefox */
