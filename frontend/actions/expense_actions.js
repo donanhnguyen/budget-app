@@ -5,6 +5,7 @@ export const RECEIVE_EXPENSE_ERRORS = 'RECEIVE_EXPENSE_ERRORS';
 export const RESET_EXPENSES = 'RESET_EXPENSES';
 export const RESET_EXPENSE_ERRORS = 'RESET_EXPENSE_ERRORS';
 export const UPDATE_WITH_DELETED_EXPENSE = 'UPDATE_WITH_DELETED_EXPENSE';
+export const RECEIVE_UPDATED_EXPENSE = 'RECEIVE_UPDATED_EXPENSE';
 
 export const receiveExpenses = (expenses) => ({
     type: RECEIVE_EXPENSES,
@@ -28,6 +29,13 @@ export const receiveExpenseErrors = (errors) => ({
 export const resetExpenseErrors = () => ({
     type: RESET_EXPENSE_ERRORS
 })
+
+export const receiveUpdatedExpense = (updatedExpense) => {
+    return {
+        type: RECEIVE_UPDATED_EXPENSE,
+        updatedExpense,
+    };
+};
 
 export const updateWithDeletedExpense = (expense) => ({
     type: UPDATE_WITH_DELETED_EXPENSE,
@@ -57,3 +65,16 @@ export const deleteExpense = (user_id, budget_id, expense_id) => {
         })
     }
 }
+
+export const updateExpense = (user_id, budget_id, expense_id, updatedExpense) => {
+    return function (dispatch) {
+        EXPENSEAPIUtil.updateExpense(user_id, budget_id, expense_id, updatedExpense).then(
+            (updated_expense) => {
+                dispatch(receiveUpdatedExpense(updated_expense));
+            },
+            (err) => {
+                dispatch(receiveExpenseErrors(err.responseJSON));
+            }
+        );
+    };
+};

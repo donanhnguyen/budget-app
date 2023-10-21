@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import NewExpenseForm from './new_expense_form';
-import {fetchExpenses, createExpense, resetExpenses, resetExpenseErrors, deleteExpense} from '../actions/expense_actions';
+import {fetchExpenses, createExpense, resetExpenses, resetExpenseErrors, deleteExpense, updateExpense} from '../actions/expense_actions';
 import {resetBudgets} from '../actions/budget_actions';
 
 const mapStateToProps = (state) => ({
@@ -17,7 +17,8 @@ const mapDispatchToProps = (dispatch) => ({
     resetExpenses: () => dispatch(resetExpenses()),
     resetBudgets: () => dispatch(resetBudgets()),
     resetExpenseErrors: () => dispatch(resetExpenseErrors()),
-    deleteExpense: (user_id, budget_id, expense_id) => dispatch(deleteExpense(user_id, budget_id, expense_id))
+    deleteExpense: (user_id, budget_id, expense_id) => dispatch(deleteExpense(user_id, budget_id, expense_id)),
+    updateExpense: (user_id, budget_id, expense_id, updated_expense) => dispatch(updateExpense(user_id, budget_id, expense_id, updated_expense))
 })
 
 const NewExpenseFormContainer = connect(mapStateToProps, mapDispatchToProps)(NewExpenseForm);

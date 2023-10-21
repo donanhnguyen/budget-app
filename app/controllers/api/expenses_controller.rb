@@ -17,6 +17,18 @@ class Api::ExpensesController < ApplicationController
         render json: @expense.errors, status: :unprocessable_entity
       end
     end
+
+    def update
+      @user = User.find(params[:user_id])
+      @budget = @user.budgets.find_by(id: params[:budget_id])
+      @expense = @budget.expenses.find(params[:id])
+    
+      if @expense.update(expense_params)
+        render :show
+      else
+        render json: @expense.errors, status: :unprocessable_entity
+      end
+    end
   
     def destroy
       @expense = Expense.find(params[:id])

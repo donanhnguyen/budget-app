@@ -24,5 +24,9 @@ module.exports = {
   devtool: 'cheap-eval-source-map',
   resolve: {
     extensions: [".js", ".jsx", "*", ".jpg"]
+  },
+  watchOptions: {
+    poll: true,
+    ignored: /node_modules/
   }
 };

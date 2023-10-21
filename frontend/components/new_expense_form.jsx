@@ -102,7 +102,7 @@ class NewExpenseForm extends React.Component {
     }
 
     displayAllExpenses () {
-        var {currentExpenses, currentBudget, deleteExpense} = this.props;
+        var {currentExpenses, currentBudget, deleteExpense, updateExpense} = this.props;
         var sortedExpenses = currentExpenses.sort((a, b) => {
             var keyA = new Date (a.date);
             var keyB = new Date (b.date);
@@ -116,6 +116,7 @@ class NewExpenseForm extends React.Component {
                         currentBudget={currentBudget} 
                         currentUserId={this.state.user_id}
                         deleteExpense={deleteExpense}
+                        updateExpense={updateExpense}
                     />
                 </li>
             )

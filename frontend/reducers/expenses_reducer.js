@@ -1,4 +1,4 @@
-import {RECEIVE_EXPENSES, RECEIVE_EXPENSE, RESET_EXPENSES, UPDATE_WITH_DELETED_EXPENSE} from '../actions/expense_actions';
+import {RECEIVE_EXPENSES, RECEIVE_EXPENSE, RESET_EXPENSES, UPDATE_WITH_DELETED_EXPENSE, RECEIVE_UPDATED_EXPENSE} from '../actions/expense_actions';
 import merge from 'lodash/merge';
 
 const expensesReducer = (state = {}, action) => {
@@ -19,11 +19,17 @@ const expensesReducer = (state = {}, action) => {
                 return expense.id !== action.expense.id
                 }    
             )
-            const newStateGoddammit = {};
+            const newStateOkay= {};
             newStateWithoutDeletedExpense.forEach((single_expense) => {
-                newStateGoddammit[single_expense.id] = single_expense;
+                newStateOkay[single_expense.id] = single_expense;
             });
-            return newStateGoddammit;
+            return newStateOkay;
+        case RECEIVE_UPDATED_EXPENSE:
+                // Handle updating the expense here
+                return {
+                  ...state,
+                  [action.updatedExpense.id]: action.updatedExpense,
+                };
         case RESET_EXPENSES:
             return {};
         default:
