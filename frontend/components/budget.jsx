@@ -15,7 +15,7 @@ class Budget extends React.Component {
 
     deleteBudget () {
         var {budget, currentUser, deleteBudget} = this.props;
-        deleteBudget(currentUser.id, budget.id);
+        deleteBudget((currentUser ? currentUser.id: JSON.parse(localStorage.getItem('loggedInUser')).id), budget.id);
     }
 
     render () {

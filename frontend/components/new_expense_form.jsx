@@ -12,7 +12,7 @@ class NewExpenseForm extends React.Component {
             amount: 0,
             date: null,
             description: null,
-            user_id: this.props.currentUser ? this.props.currentUser.id : null,
+            user_id: this.props.currentUser ? this.props.currentUser.id : JSON.parse(localStorage.getItem('loggedInUser')).id,
             currentTakeHomePay: this.props.takeHomePayDataset[0].amount
         }
     }

@@ -15,8 +15,8 @@ class Greeting extends React.Component {
     }
 
     currentUserHeading () {
-        if (this.props.currentUser) {
-            return <h1 class="greeting-logged-in">You are logged in as: {this.props.currentUser.username}</h1>
+        if (this.props.currentUser || JSON.parse(localStorage.getItem('loggedInUser'))) {
+            return <h1 class="greeting-logged-in">You are logged in as: {this.props.currentUser? this.props.currentUser.username : JSON.parse(localStorage.getItem('loggedInUser')).username}</h1>
         } else {
             return <h1 class="greeting-logged-in">You are not currently logged in. Click <Link to="/login">Here</Link> to login or <Link to="/signup">Here</Link> to sign up.</h1>
         }

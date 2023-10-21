@@ -42,7 +42,7 @@ class EditBudget extends React.Component {
             totalExpenses += expense.amount;
         })
         var moneySpent = totalExpenses;
-        if (currentUser && currentBudget) {
+        if ((currentUser || JSON.parse(localStorage.getItem('loggedInUser'))) && currentBudget) {
             return (
                 <div>
                     <h1>Month of {currentBudget.month} {currentBudget.year}</h1>
@@ -53,7 +53,7 @@ class EditBudget extends React.Component {
                 </div>
             ) 
         } else {
-            return <Redirect to='/login'/>
+            return <Redirect to='/'/>
         }
     }
 

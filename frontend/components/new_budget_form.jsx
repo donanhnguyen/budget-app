@@ -5,15 +5,20 @@ const NewBudgetForm = (props) => {
     month: null,
     year: null,
     salary: null,
-    user_id: props.currentUser ? props.currentUser.id : null,
+    user_id: props.currentUser ? props.currentUser.id : (JSON.parse(localStorage.getItem('loggedInUser')) ? JSON.parse(localStorage.getItem('loggedInUser')).id : null  ),
   });
+
+  useEffect(() => {
+    setBudget((prevState) => {
+      return {
+        ...prevState,
+        user_id: JSON.parse(localStorage.getItem('loggedInUser')).id
+      }
+    })
+  }, [])
 
   const postFormRef = useRef(null);
   const monthRef = useRef(null);
-
-//   useEffect(() => {
-//     props.resetBudgetErrors();
-//   }, [props]);
 
   const update = (field) => (event) => {
     setBudget({
@@ -33,7 +38,7 @@ const NewBudgetForm = (props) => {
 
   const submitBudget = (event) => {
     event.preventDefault();
-    props.createBudget(props.currentUser.id, budget);
+    props.createBudget(JSON.parse(localStorage.getItem('loggedInUser')).id, budget);
     props.resetBudgetErrors();
     clearForm();
   };

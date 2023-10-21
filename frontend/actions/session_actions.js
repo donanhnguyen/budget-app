@@ -14,27 +14,31 @@ export const receiveErrors = (errors) => ({
 
 export const login = (user) => {
     return function (dispatch) {
-        APIUtil.login(user).then(loggedinuser => (
-            dispatch(receiveCurrentUser(loggedinuser) )
-          ), err => (
+        APIUtil.login(user).then(loggedinuser => {
+            
+            localStorage.setItem('loggedInUser', JSON.stringify(loggedinuser));
+            dispatch(receiveCurrentUser(JSON.parse(localStorage.getItem('loggedInUser'))) )
+          }, err => (
             dispatch(receiveErrors(err.responseJSON))
           ))
     }
 };
 
 export const signup = user => dispatch => (
-    APIUtil.signup(user).then(user => (
+    APIUtil.signup(user).then(user => {
       dispatch(receiveCurrentUser(user))
-    ), err => (
+      localStorage.setItem('loggedInUser', JSON.stringify(user));
+    }, err => (
       dispatch(receiveErrors(err.responseJSON))
     ))
 );
 
 export const logout = () => {
     return function (dispatch) {
-        APIUtil.logout().then(user => (
+        APIUtil.logout().then(user => {
             dispatch(receiveCurrentUser(null))
-          ))
+            localStorage.removeItem('loggedInUser');
+        })
     }
 };
 

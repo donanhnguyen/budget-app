@@ -21,7 +21,7 @@ import {
 
     render () {
     
-        if (this.props.currentUser) {
+        if (this.props.currentUser || JSON.parse(localStorage.getItem('loggedInUser'))) {
             return (
                     <div class="nav-bar-container">
 

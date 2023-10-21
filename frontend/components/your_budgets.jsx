@@ -26,8 +26,8 @@ class YourBudgets extends React.Component {
     }  
 
     componentDidMount () {
-        if (this.props.currentUser) {
-             this.props.fetchBudgets(this.props.currentUser.id);
+        if (this.props.currentUser || JSON.parse(localStorage.getItem('loggedInUser'))) {
+             this.props.fetchBudgets(this.props.currentUser ? this.props.currentUser.id : JSON.parse(localStorage.getItem('loggedInUser')).id);
         }
         setTimeout(function () {
             this.setState({ready: true});
@@ -42,7 +42,7 @@ class YourBudgets extends React.Component {
 
     render () {
         if (this.state.ready) {
-            if (this.props.currentUser) {
+            if (this.props.currentUser || JSON.parse(localStorage.getItem('loggedInUser'))) {
                 return (
                     <div class="home-page-container">
                         <div>

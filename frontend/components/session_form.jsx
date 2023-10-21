@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, Redirect } from 'react-router-dom';
 
 function SessionForm(props) {
     const [formData, setFormData] = useState({
@@ -75,68 +75,74 @@ function SessionForm(props) {
         }
     };
 
-    return (
-        <div className="session-form-container session-form-background">
-            <div className="session-form">
-                <h1>
-                    {props.formType} or {navLink()}
-                </h1>
+    if (JSON.parse(localStorage.getItem('loggedInUser'))) {
+        return <Redirect to='/'/>
+    } else {
+            return (
+            <div className="session-form-container session-form-background">
+                <div className="session-form">
+                    <h1>
+                        {props.formType} or {navLink()}
+                    </h1>
 
-                {error && <div className="error-message">{error}</div>}
+                    {error && <div className="error-message">{error}</div>}
 
-                {renderErrors()}
+                    {renderErrors()}
 
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="username">Username</label>
-                        <input
-                            type="text"
-                            id="username"
-                            value={formData.username}
-                            onChange={handleInputChange('username')}
-                            onKeyDown={handleKeyPress}
-                        />
-                    </div>
-
-                    <div className="form-group">
-                        <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            id="password"
-                            value={formData.password}
-                            onChange={handleInputChange('password')}
-                            onKeyDown={handleKeyPress}
-                        />
-                    </div>
-
-                    {props.formType === "signup" ?
-                    
+                    <form onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <label htmlFor="confirmPassword">Confirm Password</label>
+                            <label htmlFor="username">Username</label>
                             <input
-                                type="password"
-                                id="confirmPassword"
-                                value={formData.confirmPassword}
-                                onChange={handleInputChange('confirmPassword')}
+                                type="text"
+                                id="username"
+                                value={formData.username}
+                                onChange={handleInputChange('username')}
                                 onKeyDown={handleKeyPress}
                             />
                         </div>
 
-                        : ""
-                
-                    }
+                        <div className="form-group">
+                            <label htmlFor="password">Password</label>
+                            <input
+                                type="password"
+                                id="password"
+                                value={formData.password}
+                                onChange={handleInputChange('password')}
+                                onKeyDown={handleKeyPress}
+                            />
+                        </div>
 
-                    <div className="form-group">
-                        <input
-                            className="session-submit-button"
-                            type="submit"
-                            value="Submit"
-                        />
-                    </div>
-                </form>
+                        {props.formType === "signup" ?
+                        
+                            <div className="form-group">
+                                <label htmlFor="confirmPassword">Confirm Password</label>
+                                <input
+                                    type="password"
+                                    id="confirmPassword"
+                                    value={formData.confirmPassword}
+                                    onChange={handleInputChange('confirmPassword')}
+                                    onKeyDown={handleKeyPress}
+                                />
+                            </div>
+
+                            : ""
+                    
+                        }
+
+                        <div className="form-group">
+                            <input
+                                className="session-submit-button"
+                                type="submit"
+                                value="Submit"
+                            />
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
+
+    
 }
 
 export default withRouter(SessionForm);
