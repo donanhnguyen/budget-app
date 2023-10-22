@@ -75,6 +75,10 @@ function SessionForm(props) {
         }
     };
 
+    const loginAsTest = () => {
+        props.processForm({username: 'test', password: 'test'});
+    }
+
     if (JSON.parse(localStorage.getItem('loggedInUser'))) {
         return <Redirect to='/'/>
     } else {
@@ -137,6 +141,12 @@ function SessionForm(props) {
                             />
                         </div>
                     </form>
+
+                    {props.formType === "login" ?
+                        <button onClick={ loginAsTest } className='test-button'>Log in as Test</button>
+                        :
+                        ""}
+
                 </div>
             </div>
         );

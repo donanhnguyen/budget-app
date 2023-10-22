@@ -15,6 +15,7 @@ import {
     }
 
     logout () {
+        localStorage.removeItem('loggedInUser');
         this.props.logout();
         this.props.history.push('/');
     }
@@ -27,7 +28,7 @@ import {
 
                             <ul class="nav-bar-list left">
                                 <li><Link class={'tc-link nav-link nav-link-hover'} to="/">Home</Link></li>
-                                <li> <Link class={'nav-link nav-link-hover'} to="/your_budgets">Your Budgets</Link></li>        
+                                <li> <Link class={'nav-link nav-link-hover'} to="/your_budgets">Budget Manager</Link></li>        
                             </ul>
                             
                             <ul class="nav-bar-list right">

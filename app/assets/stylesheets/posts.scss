@@ -51,7 +51,7 @@
     color: rgb(0, 0, 0);
     box-shadow: 1px 1px 2px 1px rgb(228, 228, 228);
     padding: 4px;
-    background: linear-gradient(rgb(249, 249, 249), rgb(242, 246, 254));
+    background-color: rgb(255, 255, 255);
     text-align: center;
     margin-top: 10px;
 }
@@ -76,6 +76,8 @@
     /* Create a flex container to display divs side by side */
     display: flex;
     justify-content: space-between;
+    padding-bottom: 40px;
+    border-bottom: 2px solid rgba(158, 158, 158, 0.457);
 }
 
 
