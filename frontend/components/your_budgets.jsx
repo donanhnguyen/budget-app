@@ -9,8 +9,31 @@ class YourBudgets extends React.Component {
         this.state = {ready: false};
     }
 
+    sortBudgets (budgets) {
+        const monthMap = {
+            January: 1, February: 2, March: 3, April: 4, May: 5, June: 6,
+            July: 7, August: 8, September: 9, October: 10, November: 11, December: 12
+          };
+          
+          // Sort the budgets array
+          budgets.sort((a, b) => {
+            // Compare years first
+            const yearComparison = b.year.toString().localeCompare(a.year.toString());
+            if (yearComparison !== 0) {
+              return yearComparison;
+            }
+          
+            // If years are the same, compare months
+            const monthA = monthMap[a.month];
+            const monthB = monthMap[b.month];
+            return monthB - monthA;
+         })
+          
+          return budgets
+    }
+
     yourBudgets () {
-        var budgets = this.props.currentUserBudgets;
+        var budgets = this.sortBudgets(this.props.currentUserBudgets);
         var displayBudgets = budgets.map((singleBudget) => {
             return (
                 <div>
@@ -22,7 +45,7 @@ class YourBudgets extends React.Component {
                 </div>
             )
         });
-        return displayBudgets.reverse();
+        return displayBudgets;
     }  
 
     componentDidMount () {

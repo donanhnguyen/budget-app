@@ -134,7 +134,50 @@ class NewExpenseForm extends React.Component {
         }
     }
 
+    monthNameToNumber(monthName) {
+        const {year} = this.props.currentBudget
+        // Create a new Date object using the month name
+        const date = new Date(`${monthName} 1, ${year}`); 
+      
+        // Use the getMonth method to get the month number (0-based)
+        let monthNumber = date.getMonth() + 1; // Adding 1 to make it 1-based
+        if (monthNumber.toString().length == 1) {
+            monthNumber = "0" + monthNumber;
+        }
+        return monthNumber;
+      }
+
+    lastDay() {
+        const {year, month} = this.props.currentBudget
+
+        const date = new Date(`${month} 1, ${year}`); 
+      
+        let monthNumber = date.getMonth() + 1; // Adding 1 to make it 1-based
+
+        let lastDay;
+
+        if ([4, 6, 9, 11].includes(monthNumber)) {
+            lastDay = 30; // April, June, September, November
+        } else if (monthNumber === 2) {
+        // February
+        if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+            lastDay = 29; // Leap year
+        } else {
+            lastDay = 28; // Non-leap year
+        }
+        } else {
+            lastDay = 31; // All other months
+        }
+        return lastDay;
+    }
+
     render () {
+
+        const {year, month} = this.props.currentBudget
+ 
+        const minDate = `${year}-${this.monthNameToNumber(month)}-01`;
+        const maxDate = `${year}-${this.monthNameToNumber(month)}-${this.lastDay()}`;
+
         return (
             <div>
                 <h1 class="page-title">Your take-home monthly pay is: ${this.state.currentTakeHomePay.toLocaleString()}</h1>
@@ -160,7 +203,10 @@ class NewExpenseForm extends React.Component {
                             </div>
                             <div class="form-group">
                                 <label for='date'>Date</label>
-                                <input class='post-subject' id='date' type='date' onChange={this.update('date')}/>
+                                <input class='post-subject' id='date' type='date' onChange={this.update('date')}
+                                    min={minDate}
+                                    max={maxDate}
+                                />
                             </div>
                             <div class="form-group">
                                 <label for='description'>Description</label>
