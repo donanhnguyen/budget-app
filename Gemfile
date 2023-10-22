@@ -34,7 +34,6 @@ gem 'jquery-rails'
 
 gem 'bootstrap-sass'
 gem 'psych', '< 4'
-gem 'nokogiri', '1.10.9'  # Specify an older version compatible with Ruby 2.6.8
 
 
 
