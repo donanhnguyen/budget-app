@@ -50,7 +50,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack:deploy": "webpack --config=webpack.config.js -p",
     "heroku-postbuild": "npm run webpack:deploy",
-    "webpack": "webpack --watch"
+    "webpack": "webpack --watch",
+    "start": "webpack --watch",
+    "build": "webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
