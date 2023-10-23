@@ -49,6 +49,7 @@ a {
 a:hover {
     color: rgba(0, 123, 255, 0.67);
 }
+optgroup { font-size:40px; }
 option {
     text-align: center;
 }
@@ -241,46 +242,6 @@ option {
     border: 1px solid black;
 }
 
-// -media queries
-@media screen and (min-width: 2000px) {
-    body {
-        width: 1400px;
-        margin: auto;
-    }
-}
-@media screen and (max-width: 815px) {
-    .greeting-container {
-        padding: 85px;
-        font-size: 20px;
-    }
-}
-@media screen and (max-width: 620px) {
-    .highlights-container {
-        display: block;
-    }
-    .highlights-background {
-        min-height: 750px;
-    }
-}
-@media screen and (max-width: 480px) {
-    .greeting-container {
-        font-size: 15px;
-    }
-}
-@media screen and (max-width: 380px) {
-    .greeting-container {
-        padding: 50px;
-        font-size: 12px;
-    }
-    input[type='text'], input[type='password'] {
-        font-size: 1em;
-    }
-    .nav-bar-container, .tc-link {
-        font-size: 1.1em;
-    }
-
-}
-
 
 // pie chart
 
@@ -298,7 +259,7 @@ option {
   
   #pie-chart {
     height: 100%;
-    margin: 0 auto;
+    // margin: 0 auto;
     position: relative;
     display: block;
     // width: 1200px;
@@ -408,3 +369,48 @@ option {
     }
   }
   
+  // -media queries
+@media screen and (min-width: 2000px) {
+    body {
+        width: 1400px;
+        margin: auto;
+    }
+}
+@media screen and (max-width: 815px) {
+    .greeting-container {
+        padding: 85px;
+        font-size: 20px;
+    }
+}
+@media screen and (max-width: 620px) {
+    .highlights-container {
+        display: block;
+    }
+    .highlights-background {
+        min-height: 750px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .greeting-container {
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 415px) {
+    .greeting-container {
+        padding: 50px;
+        font-size: 12px;
+    }
+    input[type='text'], input[type='password'] {
+        font-size: 1em;
+    }
+    .nav-bar-container {
+        padding-top: 12px;
+        padding-bottom: 5px;
+    }
+    .nav-bar-list li {
+        padding: 0px;
+        font-size: .8em;
+    }
+
+}
+

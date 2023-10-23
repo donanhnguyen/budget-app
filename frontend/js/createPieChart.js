@@ -2,7 +2,7 @@
 
 const createPieChart = (dataset) => {
 
-var width = 580;
+var width = 365;
 var height = 500;
 
 var radius = Math.min(width, height) / 2;
@@ -32,21 +32,6 @@ var arc = d3.arc()
 var pie = d3.pie() 
   .value(function(d) { return d.amount; }) 
   .sort(null); 
-// var pie = d3.pie() 
-//   .value(function(d) { 
-//     if (d.type === "Take-Home") {
-//       console.log("take home pay is " + takeHomePay);
-//       console.log("money spent is " + moneySpent);
-//       d.amount = d.amount - moneySpent;
-//       return d.amount;
-//     } else {
-//       return d.amount; 
-//     }
-    
-//   }) 
-//   .sort(null); 
-
-
 
 var tooltip = d3.select('#pie-chart') 
   .append('div')                                   
@@ -74,33 +59,6 @@ var path = svg.selectAll('path')
   .attr('fill', function(d, i) { return color1[i]; }) 
     .attr("class", "pie-slice")
   .each(function(d) { this._current - d; }); 
-
-    // path.transition()
-    // .duration(1000)
-    // .attrTween('d', function(d) {
-    //     var interpolate = d3.interpolate({startAngle: 0, endAngle: 0}, d);
-    //     return function(t) {
-    //         return arc(interpolate(t));
-    //     };
-    // });
-
-//text
-    // var text = svg.selectAll('text')
-    // .data(pie(dataset))
-    // .enter()
-    // .append("text")
-    // .transition()
-    // .duration(1000)
-    // .attr("transform", function (d) {
-    //     return "translate(" + arc.centroid(d) + ")";
-    // })
-    // .attr("dy", ".60em")
-    // .attr("text-anchor", "middle")
-    // .text(function(d){
-    //     return d.data.percentage + "%";
-    // })
-    // .attr("style", "font-size: 15px; fill: white")
-//text
 
 path.on('mouseover', function(d) {      
  var total = d3.sum(dataset.map(function(d) {  

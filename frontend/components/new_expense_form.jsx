@@ -186,7 +186,9 @@ class NewExpenseForm extends React.Component {
                 </div>
                 
                 <div class="flex-container">
+                    
                     <div ref='pieChart' class='left' id='pie-chart'></div>
+
                     <div ref='postForm' class={`post-form-container`}>
 
                         <form ref='postFormReset' class="custom-form" onSubmit={this.submitExpense.bind(this)}>
