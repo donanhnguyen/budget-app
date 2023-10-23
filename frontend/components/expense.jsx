@@ -48,9 +48,11 @@ const Expense = ({ expense, currentUserId, currentBudget, deleteExpense, updateE
         :
         <p>{expense.description}</p>
         }
-        <br></br>
-      <button className="post-submit-button" onClick={deleteExpenseHandler}>Delete Expense</button>
 
+        {!editMode ?
+        <button className="post-submit-button" onClick={deleteExpenseHandler}>Delete Expense</button>
+        :""}
+    
       {editMode ?
         <>
         <button onClick={handleEditExpense}>Edit</button><button onClick={() => setEditMode((prevState) => !prevState)}>Cancel</button>

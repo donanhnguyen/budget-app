@@ -180,15 +180,19 @@ class NewExpenseForm extends React.Component {
 
         return (
             <div>
-                <h1 class="page-title">Your take-home monthly pay is: ${this.state.currentTakeHomePay.toLocaleString()}</h1>
-                <h1 class="page-title">Your leftover money AFTER expenses is: ${this.afterExpenses().toLocaleString()}</h1>
+                <div className='take-home-info'>
+                    <h1 class="page-title">Take-home monthly pay: ${this.state.currentTakeHomePay.toLocaleString()}</h1>
+                    <h1 class="page-title">Leftover AFTER expenses:<span className='leftover'>${this.afterExpenses().toLocaleString()}</span></h1>
+                </div>
+                
                 <div class="flex-container">
                     <div ref='pieChart' class='left' id='pie-chart'></div>
                     <div ref='postForm' class={`post-form-container`}>
-                        <form ref="postFormReset" onSubmit={this.submitExpense.bind(this)}>
-                            <div class="form-group">
+
+                        <form ref='postFormReset' class="custom-form" onSubmit={this.submitExpense.bind(this)}>
+                            <div class="custom-form-group">
                                 <label for='category'>Category</label>
-                                <select class='post-category-dropdown' ref='category' id='category' onChange={this.update('category')}>
+                                <select class='custom-category-dropdown' ref='category' id='category' onChange={this.update('category')}>
                                     <option value="" selected disabled hidden>Choose Category</option>
                                     <option value="Housing">Housing</option>
                                     <option value="Food">Food</option>
@@ -197,25 +201,26 @@ class NewExpenseForm extends React.Component {
                                     <option value="Misc">Misc</option>
                                 </select>
                             </div>
-                            <div class="form-group">
+                            <div class="custom-form-group">
                                 <label for='amount'>Amount</label>
-                                <input class='post-subject' id='amount' type='number' onChange={this.update('amount')}/>
+                                <input class='custom-subject' id='amount' type='number' onChange={this.update('amount')}/>
                             </div>
-                            <div class="form-group">
+                            <div class="custom-form-group">
                                 <label for='date'>Date</label>
-                                <input class='post-subject' id='date' type='date' onChange={this.update('date')}
+                                <input class='custom-subject' id='date' type='date' onChange={this.update('date')}
                                     min={minDate}
                                     max={maxDate}
                                 />
                             </div>
-                            <div class="form-group">
+                            <div class="custom-form-group">
                                 <label for='description'>Description</label>
-                                <input class='post-subject' id='description' type='text' onChange={this.update('description')}/>
+                                <input class='custom-subject' id='description' type='text' onChange={this.update('description')}/>
                             </div>
-                            <div class="form-group">
-                                <input class='post-submit-button' type='submit' value='Add New Expense' />
+                            <div class="custom-form-group">
+                                <input class='custom-submit-button' type='submit' value='Add New Expense' />
                             </div>
                         </form>
+
                         <div class="form-group">
                             <ul class="error-list">{this.displayErrors()}</ul>
                         </div>

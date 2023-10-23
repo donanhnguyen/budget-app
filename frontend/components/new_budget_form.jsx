@@ -75,59 +75,59 @@ const NewBudgetForm = (props) => {
         <ul>{displayBudgetErrors()}</ul>
       </div>
       <div ref={postFormRef} className={`post-budget-container`}>
-        <form onSubmit={submitBudget}>
-          <label htmlFor='month'>Month</label>
-          <br />
-          <select
-            className='post-category-dropdown'
-            ref={monthRef}
-            id='month'
-            onChange={update('month')}
-            
-          >
-            <option value='' selected disabled hidden>
-              Choose Month
-            </option>
-            <option value='January'>January</option>
-            <option value='February'>February</option>
-            <option value='March'>March</option>
-            <option value='April'>April</option>
-            <option value='May'>May</option>
-            <option value='June'>June</option>
-            <option value='July'>July</option>
-            <option value='August'>August</option>
-            <option value='September'>September</option>
-            <option value='October'>October</option>
-            <option value='November'>November</option>
-            <option value='December'>December</option>
-          </select>
-          <br /><br />
-          <label htmlFor='year'>Year</label>
-          <br />
-          <select
-            className='post-subject'
-            id='year'
-            onChange={update('year')}
-            value={budget.year}
-          >
-            <option value="" disabled selected>
-                Year
-            </option>
-            {generateYearOptions()}
-          </select>
-          <br />
-          <label htmlFor='salary'>Annual Salary</label>
-          <br />
-          <input
-            className='post-subject'
-            id='salary'
-            type='number'
-            onChange={update('salary')}
-            value={budget.salary}
-          />
-          <br />
-          <input className='post-submit-button' type='submit' value='Create New Budget' />
-        </form>
+
+            <form onSubmit={submitBudget} className="custom-budget-form">
+            <label htmlFor='month' className="custom-form-label">Month</label>
+            <br />
+            <select
+                className='custom-category-dropdown'
+                ref={monthRef}
+                id='month'
+                onChange={update('month')}
+            >
+                    <option value='' selected disabled hidden>
+                      Choose Month
+                    </option>
+                    <option value='January'>January</option>
+                    <option value='February'>February</option>
+                    <option value='March'>March</option>
+                    <option value='April'>April</option>
+                    <option value='May'>May</option>
+                    <option value='June'>June</option>
+                    <option value='July'>July</option>
+                    <option value='August'>August</option>
+                    <option value='September'>September</option>
+                    <option value='October'>October</option>
+                    <option value='November'>November</option>
+                    <option value='December'>December</option>
+            </select>
+            <label htmlFor='year' className="custom-form-label">Year</label>
+            <br />
+            <select
+                className='custom-subject'
+                id='year'
+                onChange={update('year')}
+                value={budget.year}
+            >
+                <option value="" disabled selected>
+                        Year
+                </option>
+                    {generateYearOptions()}
+            </select>
+            <br />
+            <label htmlFor='salary' className="custom-form-label">Annual Salary</label>
+            <br />
+            <input
+                className='custom-subject'
+                id='salary'
+                type='number'
+                onChange={update('salary')}
+                value={budget.salary}
+            />
+            <br />
+            <input className='custom-submit-button' type='submit' value='Create New Budget' />
+            </form>
+
       </div>
     </div>
   );

@@ -44,9 +44,12 @@ class EditBudget extends React.Component {
         var moneySpent = totalExpenses;
         if ((currentUser || JSON.parse(localStorage.getItem('loggedInUser'))) && currentBudget) {
             return (
-                <div>
-                    <h1>Month of {currentBudget.month} {currentBudget.year}</h1>
-                    <h1>${currentBudget.salary.toLocaleString()} annual salary</h1>
+                <div >
+                    <div className='year-and-salary-info'>
+                        <h1>Month of {currentBudget.month} {currentBudget.year}</h1>
+                        <h1>${currentBudget.salary.toLocaleString()} annual salary</h1>
+                    </div>
+                    
                     <div>
                         <NewExpenseFormContainer moneySpent={moneySpent} currentBudget={currentBudget} takeHomePayDataset={this.calculateTakeHomePay()}/>
                     </div>
