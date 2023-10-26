@@ -2,7 +2,7 @@
 
 const createPieChart = (dataset) => {
 
-var width = 365;
+var width = 520;
 var height = 500;
 
 var radius = Math.min(width, height) / 2;

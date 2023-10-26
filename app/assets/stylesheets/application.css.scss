@@ -33,6 +33,7 @@ button {
 }
 label {
     padding: 7px;
+    font-size: 1.1em;
 }
 input[type='text'], input[type='password'], input[type='number'] {
     font-size: 25px;
@@ -49,7 +50,9 @@ a {
 a:hover {
     color: rgba(0, 123, 255, 0.67);
 }
-optgroup { font-size:40px; }
+select {
+    font-size: 1.2em;
+}
 option {
     text-align: center;
 }
@@ -95,9 +98,7 @@ option {
     border-radius: 25px;
 }
 .nav-link-hover:hover {
-    background-color: rgb(108, 154, 238);
-    color: rgb(255, 255, 255);
-    text-decoration: none;
+    color: rgba(0, 93, 253, 0.879);
 }
 .session-link-hover:hover {
     color: rgb(174, 206, 255);
@@ -119,6 +120,15 @@ option {
     -webkit-animation: fadein 1.2s; /* Safari and Chrome */
     -o-animation: fadein 1.2s; /* Opera */
 }
+.greeting-container h1, .greeting-container p {
+    background-color: rgba(0, 0, 0, 0.282);
+    border-radius: 10px;
+    padding: 20px;
+}
+.greeting-container h1 {
+    font-family: 'Playpen Sans', cursive;
+}
+
 //--fade effect start
 
 @keyframes fadein {
@@ -229,6 +239,13 @@ option {
     box-shadow: 1px 0px 1px 1px rgba(127, 127, 127, 0.355);
     background: rgb(255, 255, 255);
     margin: auto;
+    position: relative;
+}
+.single-budget h1 {
+    color: rgb(108, 154, 238);
+    margin-top: 30px;
+    margin-bottom: 35px;
+    font-size: 1.7em;
 }
 .single-budget:hover {
     color: blue;

@@ -219,7 +219,7 @@ class NewExpenseForm extends React.Component {
                                 <input class='custom-subject' id='description' type='text' onChange={this.update('description')}/>
                             </div>
                             <div class="custom-form-group">
-                                <input class='custom-submit-button' type='submit' value='Add New Expense' />
+                                <input class='post-submit-button' type='submit' value='Add New Expense' />
                             </div>
                         </form>
 

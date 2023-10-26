@@ -125,7 +125,7 @@ const NewBudgetForm = (props) => {
                 value={budget.salary}
             />
             <br />
-            <input className='custom-submit-button' type='submit' value='Create New Budget' />
+            <input className='post-submit-button' type='submit' value='Create New Budget' />
             </form>
 
       </div>

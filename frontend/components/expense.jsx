@@ -5,6 +5,8 @@ const Expense = ({ expense, currentUserId, currentBudget, deleteExpense, updateE
     const [editMode, setEditMode] = useState(false);
     const [newDescription, setNewDescription] = useState(expense.description);
     const [newAmount, setNewAmount] = useState(expense.amount);
+    const parts = expense.date.split('-');
+    const formattedDate = `${parts[1]}/${parts[2]}/${parts[0]}`;
 
     const deleteExpenseHandler = () => {
         const confirmMessage = window.confirm('Are you sure you want to delete this expense?');
@@ -29,12 +31,12 @@ const Expense = ({ expense, currentUserId, currentBudget, deleteExpense, updateE
   return (
     <div>
       <h1>
-        {expense.date} : {expense.category}
+        {formattedDate} : {expense.category}
       </h1>
 
       {editMode ? 
         <>
-            <label>Amount</label>
+            <p>Amount</p>
             <input type='number' className='edit-expense-input' onChange={(e) => setNewAmount(e.target.value)} value={newAmount}></input>
         </>
         :
@@ -55,10 +57,11 @@ const Expense = ({ expense, currentUserId, currentBudget, deleteExpense, updateE
     
       {editMode ?
         <>
-        <button onClick={handleEditExpense}>Edit</button><button onClick={() => setEditMode((prevState) => !prevState)}>Cancel</button>
+        <br></br>
+        <button className='expense-edit-button' onClick={handleEditExpense}>Edit</button><button className='expense-edit-button' onClick={() => setEditMode((prevState) => !prevState)}>Cancel</button>
         </>  
         :
-        <button className="post-submit-button" onClick={() => setEditMode((prevState) => !prevState)}>Edit Expense</button>
+        <button className="edit-expense-button" onClick={() => setEditMode((prevState) => !prevState)}>Edit Expense</button>
         }
       
     </div>

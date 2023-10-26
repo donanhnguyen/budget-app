@@ -8,7 +8,7 @@
 }
 
 .all-expenses h1 {
-    font-size: 18px;
+    font-size: 1.4em;
     color: rgb(25, 94, 172);
 }
 .all-expenses p {
@@ -16,7 +16,7 @@
 }
 .all-expenses li {
     background-color: white;
-    box-shadow: 1px 1px 1px 1px rgb(226, 226, 226);
+    box-shadow: 1px 1px 10px 1px rgb(226, 226, 226);
     border-radius: 5px;
     margin-bottom: 10px;
     padding: 10px;
@@ -53,6 +53,20 @@
     padding: 10px;
     color: green;
     font-weight: bold;
+}
+
+.expense-edit-button {
+    min-width: 100px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: 7px;
+    font-size: 1em;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(125, 125, 125);
+}
+.expense-edit-button:hover {
+    background-color: rgba(145, 145, 145, 0.939);
 }
 
 // new expense form

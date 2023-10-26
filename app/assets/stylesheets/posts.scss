@@ -28,10 +28,32 @@
     margin-top:5px;
     margin-bottom: 5px;
     padding: 7px;
-    font-size: 18px;
+    font-size: 1em;
     border-radius: 5px;
     color: white;
     background-color: rgb(24, 86, 152);
+}
+
+.delete-budget-button {
+    font-size: 1em;
+    border-radius: 5px;
+    color: rgb(192, 24, 24);
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    border: none;
+}
+.edit-expense-button {
+    font-size: 1em;
+    border-radius: 5px;
+    color: white;
+    background-color: rgba(132, 132, 132, 0.939);
+    padding: 7px;
+    margin-top:5px;
+    margin-bottom: 5px;
+}
+.edit-expense-button:hover {
+    background-color: rgba(145, 145, 145, 0.939);
 }
 .post-submit-button:hover {
     background-color: rgb(191, 68, 68);
@@ -75,7 +97,7 @@
 .flex-container {
     /* Create a flex container to display divs side by side */
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding-top: 20px;
     padding-bottom: 20px;
     border-top: 2px solid rgba(158, 158, 158, 0.209);
