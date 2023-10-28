@@ -85,7 +85,7 @@ function SessionForm(props) {
             return (
             <div className="session-form-container session-form-background">
                 <div className="session-form">
-                    <h1>
+                    <h1 style={{margin: '0px'}}>
                         {props.formType} or {navLink()}
                     </h1>
 
@@ -135,7 +135,8 @@ function SessionForm(props) {
 
                         <div className="form-group">
                             <input
-                                className="session-submit-button"
+                                style={{width: '100%'}}
+                                className="post-submit-button"
                                 type="submit"
                                 value="Submit"
                             />
@@ -143,7 +144,7 @@ function SessionForm(props) {
                     </form>
 
                     {props.formType === "login" ?
-                        <button onClick={ loginAsTest } className='test-button'>Log in as Test</button>
+                        <button onClick={ loginAsTest } style={{width: '100%'}} className='edit-expense-button'>Log in as Test</button>
                         :
                         ""}
 

@@ -26,7 +26,7 @@ class Budget extends React.Component {
                     <h1 >{budget.month} {budget.year}</h1>
                 </Link>
                 <br></br>
-                <button class='delete-budget-button' onClick={this.deleteBudget.bind(this)}>Delete Budget</button>
+                <button class='delete-budget-button' onClick={this.deleteBudget.bind(this)}>Delete</button>
             </div>
         )
     }

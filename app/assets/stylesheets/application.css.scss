@@ -40,6 +40,8 @@ input[type='text'], input[type='password'], input[type='number'] {
     border-radius: 5px;
 }
 input[type='submit'] {
+    font-family: 'Jost';
+    font-weight: bold;
     cursor: pointer;
     text-shadow: 1px 1px 1px rgb(75, 75, 75);
 }
@@ -93,15 +95,15 @@ option {
 .nav-link {
     margin: 0;
     padding: 7px;
-    color: rgb(108, 154, 238);
+    color: rgb(51, 107, 211);
     text-decoration: none;
     border-radius: 25px;
 }
 .nav-link-hover:hover {
-    color: rgba(0, 93, 253, 0.879);
+    color: rgb(107, 176, 255);
 }
 .session-link-hover:hover {
-    color: rgb(174, 206, 255);
+    color: rgb(107, 176, 255);
 }
 .greeting-logged-in {
     margin-left: 5px;
@@ -110,6 +112,8 @@ option {
 .greeting-container {
     background: image-url('budget.jpg') rgb(138, 169, 208);
     background-size: 100% 100%;
+    border-radius: 5px;
+    margin-top: 50px;
     padding: 100px;
     text-align: center;
     font-size: 40px;
@@ -121,7 +125,7 @@ option {
     -o-animation: fadein 1.2s; /* Opera */
 }
 .greeting-container h1, .greeting-container p {
-    background-color: rgba(0, 0, 0, 0.282);
+    background-color: rgba(113, 113, 113, 0.282);
     border-radius: 10px;
     padding: 20px;
 }

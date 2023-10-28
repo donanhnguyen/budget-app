@@ -25,11 +25,13 @@ class Greeting extends React.Component {
     render () {
         return (
             <div>
-                {this.currentUserHeading()}
+                
                 <div class="greeting-container">
                     <h1>BUDGET APP</h1>
                     <p>Manage your budget... on a budget (It's free)</p>
                 </div>
+                
+                {this.currentUserHeading()}
             </div>
         )
     }
