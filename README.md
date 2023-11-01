@@ -1,6 +1,6 @@
 ### Budget App
 
-[Video Link](https://www.youtube.com/watch?v=RHNEqIbuxw8)
+[Video Link](https://www.youtube.com/watch?v=fEDBEgbcjH0)
 <br>
 [Live Link](https://budget-app-m0c9.onrender.com/#/)
 
