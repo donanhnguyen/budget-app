@@ -74,5 +74,17 @@
           transform: translateX(0);
         }
       }
+
+@media screen and (max-width: 500px) {
+
+  .animated-text-header {
+    font-size: 3.2em;
+  }
+
+  .animated-text-p {
+    font-size: 1.7em;
+  }
+ 
+}
       
   

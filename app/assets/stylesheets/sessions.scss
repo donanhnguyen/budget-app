@@ -83,15 +83,16 @@ h1 {
 }
 //-media queries
 @media screen and (max-width: 500px) {
+    .session-form-container {
+        height: 60vh;
+    }
     .session-form {
         padding: 25px;
         font-size: 15px;
     }
 }
 @media screen and (max-width: 370px) {
-    .session-form {
-        font-size: 12px;
-    }
+    
     .session-submit-button {
         padding: 7px;
         font-size: 12px;
