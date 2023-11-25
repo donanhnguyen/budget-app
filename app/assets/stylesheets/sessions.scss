@@ -5,10 +5,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background: image-url('budget.jpg') center/cover no-repeat;
     height: 80vh; /* Adjust to center vertically within the viewport */
-}
-
-.session-form-background {
 }
 
 .session-form {

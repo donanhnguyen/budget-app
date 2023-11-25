@@ -1,12 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {
-    Route,
-    Redirect,
-    Switch,
-    Link,
-    HashRouter
+    Link
   } from 'react-router-dom';
+import {Button, Container} from 'react-bootstrap'
 
 class Greeting extends React.Component {
 
@@ -26,9 +22,21 @@ class Greeting extends React.Component {
         return (
             <div>
                 
-                <div class="greeting-container">
-                    <h1>BUDGET APP</h1>
-                    <p>Manage your budget... on a budget (It's free)</p>
+
+                <div fluid className="hero-section jumbotron">
+                    <div className="overlay"></div>
+                    <Container className="text-container">
+                        <h1 className="animated-text-header">Budget Manager</h1>
+                        <p className="animated-text-p">Manage your budget, on a budget (it's free).</p>
+
+                        {!JSON.parse(localStorage.getItem('loggedInUser')) ?
+                            <Button style={{color: 'white'}} className='get-started-button'>
+                                <Link style={{color: 'white'}} to="/login">Get Started</Link>
+                            </Button>
+                        :
+                        ""}
+                        
+                    </Container>
                 </div>
                 
                 {this.currentUserHeading()}

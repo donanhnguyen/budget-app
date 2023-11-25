@@ -392,10 +392,10 @@ option {
   
   // -media queries
 @media screen and (min-width: 2000px) {
-    body {
-        width: 1400px;
-        margin: auto;
-    }
+    // body {
+    //     width: 1400px;
+    //     margin: auto;
+    // }
 }
 @media screen and (max-width: 815px) {
     .greeting-container {
