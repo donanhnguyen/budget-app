@@ -3,8 +3,8 @@ import React, { useState} from 'react';
 const Expense = ({ expense, currentUserId, currentBudget, deleteExpense, updateExpense }) => {
 
     const [editMode, setEditMode] = useState(false);
-    const [newDescription, setNewDescription] = useState(expense.description);
-    const [newAmount, setNewAmount] = useState(expense.amount);
+    const [newDescription, setNewDescription] = useState();
+    const [newAmount, setNewAmount] = useState();
     const parts = expense.date.split('-');
     const formattedDate = `${parts[1]}/${parts[2]}/${parts[0]}`;
 
@@ -22,10 +22,10 @@ const Expense = ({ expense, currentUserId, currentBudget, deleteExpense, updateE
             amount: newAmount,
             description: newDescription
         }
-        if (newDescription.length && newAmount && newAmount != 0) {
+        if (newDescription || (newAmount && newAmount !== 0)) {
             updateExpense(currentUserId, currentBudget.id, expense.id, body)
             setEditMode(false);
-        }
+        } 
     }
 
   return (
@@ -37,7 +37,7 @@ const Expense = ({ expense, currentUserId, currentBudget, deleteExpense, updateE
       {editMode ? 
         <>
             <p>Amount</p>
-            <input type='number' className='edit-expense-input' onChange={(e) => setNewAmount(e.target.value)} value={newAmount}></input>
+            <input type='number' className='edit-expense-input' onChange={(e) => setNewAmount(e.target.value)} ></input>
         </>
         :
         <p>Amount: ${expense.amount}</p>
@@ -46,7 +46,7 @@ const Expense = ({ expense, currentUserId, currentBudget, deleteExpense, updateE
       <p>Description:</p>
 
         {editMode ? 
-        <input type='text' onChange={(e) => setNewDescription(e.target.value)} value={newDescription}></input>
+        <input type='text' onChange={(e) => setNewDescription(e.target.value)} ></input>
         :
         <p>{expense.description}</p>
         }
