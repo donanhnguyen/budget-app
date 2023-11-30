@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { Link, withRouter, Redirect } from 'react-router-dom';
 
 function SessionForm(props) {
@@ -9,6 +9,7 @@ function SessionForm(props) {
     });
 
     const [error, setError] = useState('');
+    const [propErrors, setPropErrors] = useState([]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -19,6 +20,9 @@ function SessionForm(props) {
                 props.processForm(user);
             } else {
                 setError('Passwords do not match');
+                setTimeout(() => {
+                    setError("")
+                }, 2000)
                 setFormData((prevState) => {
                     return {...prevState, confirmPassword: '' } 
                 });
@@ -60,19 +64,26 @@ function SessionForm(props) {
         }
     };
 
+    useEffect(() => {
+        setPropErrors(props.errors);
+
+        return () => {
+            setPropErrors([])
+        }
+
+    }, [props.errors])
+
     const renderErrors = () => {
-        if (props.errors.length > 0) {
             return (
-                <ul>
-                    {props.errors.map((error, i) => (
-                        <li className="error-message" key={`error-${i}`}>
+                <ul style={{padding: '0px'}}>
+                    {propErrors.map((error, i) => (
+                        <li style={{textAlign: 'center'}} className="error-message" key={`error-${i}`}>
                             {error}
                         </li>
                     ))}
                     <br />
                 </ul>
             );
-        }
     };
 
     const loginAsTest = () => {
@@ -89,7 +100,7 @@ function SessionForm(props) {
                         {props.formType} or {navLink()}
                     </h1>
 
-                    {error && <div className="error-message">{error}</div>}
+                    {error && <div style={{textAlign: 'center'}} className="error-message">{error}</div>}
 
                     {renderErrors()}
 

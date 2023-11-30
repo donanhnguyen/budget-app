@@ -44,9 +44,13 @@ export const createBudget = (user_id, budget) => {
     return function (dispatch) {
         BudgetAPIUtil.createBudget(user_id, budget).then( (created_budget) => (
             dispatch(receiveBudget(created_budget))
-        ), err => (
-            dispatch(receiveBudgetErrors(err.responseJSON))
-        ))
+        ), err => {
+                dispatch(receiveBudgetErrors(err.responseJSON))
+                setTimeout(() => {
+                    dispatch(resetBudgetErrors())
+                }, 2000)
+            }
+        )
     }
 };
 

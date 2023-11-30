@@ -39,7 +39,6 @@ const NewBudgetForm = (props) => {
   const submitBudget = (event) => {
     event.preventDefault();
     props.createBudget(JSON.parse(localStorage.getItem('loggedInUser')).id, budget);
-    props.resetBudgetErrors();
     clearForm();
   };
 

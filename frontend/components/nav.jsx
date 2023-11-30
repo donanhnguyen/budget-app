@@ -51,10 +51,7 @@ import {
 
                              <ul class="nav-bar-list right">
                                 <li>
-                                    <Link class={'nav-link nav-link-hover'} to="/login">LogIn</Link>
-                                </li>
-                                <li>
-                                    <Link class={'nav-link nav-link-hover'} to="/signup">SignUp</Link>
+                                    <Link class={'nav-link nav-link-hover'} to="/login">Sign In</Link>
                                 </li>
                             </ul>
                 
